@@ -1,0 +1,56 @@
+2017-11-15 09:51:36,736 - root - excel_wr.py[line:48] - INFO >>> 用例正常
+2017-11-15 09:54:27,975 - root - excel_wr.py[line:45] - INFO >>> 用例列数错误：标准列数：5，当前列数：6
+2017-11-15 09:54:45,544 - root - excel_wr.py[line:48] - INFO >>> 用例正常
+2017-11-15 09:59:00,507 - root - excel_wr.py[line:50] - INFO >>> 用例正常
+2017-11-15 09:59:27,541 - root - excel_wr.py[line:50] - INFO >>> 用例正常
+2017-11-15 10:00:45,310 - root - excel_wr.py[line:53] - INFO >>> 用例正常
+2017-11-15 10:00:45,311 - root - excel_wr.py[line:37] - ERROR >>> 数据错误
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 35, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 58, in check_data
+    if excel['function'].upeer() == '':
+AttributeError: 'float' object has no attribute 'upeer'
+2017-11-15 10:00:45,314 - root - excel_wr.py[line:37] - ERROR >>> 数据错误
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 35, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 58, in check_data
+    if excel['function'].upeer() == '':
+AttributeError: 'str' object has no attribute 'upeer'
+2017-11-15 10:01:29,343 - root - excel_wr.py[line:37] - ERROR >>> 数据错误
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 35, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 58, in check_data
+    if excel['function'].upeer() == '':
+AttributeError: 'float' object has no attribute 'upeer'
+2017-11-15 10:04:06,651 - root - excel_wr.py[line:38] - ERROR >>> 数据错误:当前行：1  当前列：4  值：{'id': 0.0, 'function': 1.0, 'path': 2.0, 'value': 3.0, 'memo': 4.0}
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 36, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 61, in check_data
+    if excel['function'].upeer() == '':
+AttributeError: 'float' object has no attribute 'upeer'
+2017-11-15 10:16:30,431 - root - excel_wr.py[line:53] - INFO >>> 用例列数错误：标准列数：5，当前列数：6
+2017-11-15 10:16:40,315 - root - excel_wr.py[line:38] - ERROR >>> 数据错误:当前行：1  当前行数据：{'id': 0.0, 'operation': 'click', 'path': 2.0, 'value': 3.0, 'dp': '', 'memo': 4.0}
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 36, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 61, in check_data
+    if excel['operation'].upeer() in operation_list:
+AttributeError: 'str' object has no attribute 'upeer'
+2017-11-15 10:55:20,305 - root - ary.py[line:22] - INFO >>> 开始打开chrome浏览器
+2017-11-15 10:55:24,819 - root - ary.py[line:30] - INFO >>> 打开浏览器成功
+2017-11-15 10:58:11,953 - root - ary.py[line:22] - INFO >>> 开始打开chrome浏览器
+2017-11-15 10:58:15,712 - root - ary.py[line:30] - INFO >>> 打开浏览器成功
+2017-11-15 10:58:40,170 - root - ary.py[line:22] - INFO >>> 开始打开chrome浏览器
+2017-11-15 10:58:43,887 - root - ary.py[line:30] - INFO >>> 打开浏览器成功
+2017-11-15 11:06:11,075 - root - ary.py[line:22] - INFO >>> 开始打开chrome浏览器
+2017-11-15 11:06:14,846 - root - ary.py[line:30] - INFO >>> 打开浏览器成功
+2017-11-15 11:07:38,970 - root - ary.py[line:22] - INFO >>> 开始打开chrome浏览器
+2017-11-15 11:07:42,709 - root - ary.py[line:30] - INFO >>> 打开浏览器成功
+2017-11-15 11:07:52,890 - root - execution_case.py[line:41] - INFO >>> 执行用例成功
+2017-11-15 11:11:54,785 - root - ary.py[line:22] - INFO >>> 开始打开chrome浏览器
+2017-11-15 11:11:58,452 - root - ary.py[line:30] - INFO >>> 打开浏览器成功
+2017-11-15 11:12:08,787 - root - execution_case.py[line:41] - INFO >>> 执行用例成功

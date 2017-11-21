@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yimi.miscloud.statisticsservice.db.r.mapper.CcKPIRMapper">
+	
+    <select id="getDepts" resultType="java.lang.String">
+        select orgId from
+        mis_org where orgType = 'CC' and parentOrgFid=0
+        order by orgName;
+    </select>
+    <select id="getTeams" resultType="java.lang.String">
+        select orgId from
+        mis_org where orgName LIKE 'CC%'
+        and parentOrgFid>0
+        order by orgName;
+    </select>
+    <select id="getCcKpiByOrg"  resultMap="ccStatisticsMap">
+		select orgId,null userId,orgName groupName,#{startDate} startDate,#{endDate} endDate,
+		#{listMoudle1} listMoudle1,#{listMoudle2} listMoudle2,#{listMoudle3} listMoudle3,#{listMoudle4} listMoudle4,#{listMoudle5} listMoudle5,
+		#{listMoudle6} listMoudle6,#{listMoudle7} listMoudle7
+		FROM mis_org
+		where 1=1
+		<if test="realmOrgIds != null and realmOrgIds.size() > 0">
+			and orgId in
+			<foreach collection="realmOrgIds" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="realmOrgIds == null">
+			and orgId = -1
+		</if>
+		order by orgName;
+    </select>
+    <select id="getCcKpiByPerson"  resultMap="ccStatisticsMap">
+		SELECT distinct IFNULL(mis_user_info.userId,-1) userId,IFNULL(mis_user_info.userRealName,'未知') groupName,null orgId,#{startDate} startDate,#{endDate} endDate,
+		#{listMoudle1} listMoudle1,#{listMoudle2} listMoudle2,#{listMoudle3} listMoudle3,#{listMoudle4} listMoudle4,#{listMoudle5} listMoudle5,
+		#{listMoudle6} listMoudle6,#{listMoudle7} listMoudle7
+		FROM mis_user_prop 
+		LEFT JOIN  mis_org ON mis_org.orgId=mis_user_prop.propId AND (mis_org.orgType='CC' OR mis_org.orgName LIKE '%销售%')
+		LEFT JOIN mis_user_info ON mis_user_info.userId = mis_user_prop.fid
+		WHERE mis_user_prop.beginTime<![CDATA[<=]]>#{endDate} and (endTime is null or endTime<![CDATA[>=]]>#{startDate}) 
+		<if test="realmOrgIds != null and realmOrgIds.size() > 0">
+			and 
+			<foreach collection="realmOrgIds" index="index" item="item" open="(" separator="or" close=")">
+				FIND_IN_SET(propId,f_query_children_org_ids(#{item}))
+			</foreach>
+		</if>
+		<if test="realmUserId != null and realmUserId != ''">
+			AND userId=#{realmUserId}
+		</if>
+		ORDER BY userRealName;
+    </select>
+    <!-- <select id="getCcKpi"  resultMap="ccStatisticsMap">
+		SELECT mis_user_info.userId,mis_user_info.userRealName groupName,propId,beginTime,IFNULL(endTime,'2099-12-31 23:59:59') endTime,
+		#{listMoudle1} listMoudle1,#{listMoudle2} listMoudle2,#{listMoudle3} listMoudle3,#{listMoudle4} listMoudle4,#{listMoudle5} listMoudle5,
+		#{listMoudle6} listMoudle6,#{listMoudle7} listMoudle7
+		FROM mis_user_prop 
+		LEFT JOIN  mis_org ON mis_org.orgId=mis_user_prop.propId AND (mis_org.orgType='CC' OR mis_org.orgName LIKE '%销售%')
+		LEFT JOIN mis_user_info ON mis_user_info.userId = mis_user_prop.fid
+		WHERE mis_user_prop.beginTime<![CDATA[<=]]>#{endDate} and (endTime is null or endTime<![CDATA[>=]]>#{startDate}) 
+		<if test="realmOrgIdStrs != null and realmOrgIdStrs != ''">
+			AND FIND_IN_SET(propId,#{realmOrgIdStrs})
+		</if>
+		<if test="realmUserIdStr != null and realmUserIdStr != ''">
+			AND userId=#{realmUserIdStr}
+		</if>
+		ORDER BY userRealName;
+    </select> -->
+    <resultMap type="com.yimi.miscloud.common.entity.response.cckpi.CcKpiResponse" id="ccStatisticsMap" autoMapping="true">
+    	<association property="telephoneConversation" javaType="com.yimi.miscloud.common.entity.response.cckpi.TelephoneConversation" select="selectTelephoneConversation"
+    		autoMapping="true" column="{startDate=startDate,endDate=endDate,userId=userId,orgId=orgId,listMoudle=listMoudle1}">
+    	</association>
+    	<association property="clientComponent" javaType="com.yimi.miscloud.common.entity.response.cckpi.ClientComponent" select="selectClientComponent"
+    		autoMapping="true" column="{startDate=startDate,endDate=endDate,userId=userId,orgId=orgId,listMoudle=listMoudle2}">
+    	</association>
+    	<association property="appointment" javaType="com.yimi.miscloud.common.entity.response.cckpi.Appointment" select="selectAppointment"
+    		autoMapping="true" column="{startDate=startDate,endDate=endDate,userId=userId,orgId=orgId,listMoudle=listMoudle3}">
+    	</association>	
+    	<association property="attend" javaType="com.yimi.miscloud.common.entity.response.cckpi.Attend" select="selectAttend"
+    		autoMapping="true" column="{startDate=startDate,endDate=endDate,userId=userId,orgId=orgId,listMoudle=listMoudle4}">
+    	</association>	
+    	<association property="converseRate" javaType="com.yimi.miscloud.common.entity.response.cckpi.ConverseRate" select="selectConverseRate"
+    		autoMapping="true" column="{startDate=startDate,endDate=endDate,userId=userId,orgId=orgId,listMoudle=listMoudle5}">
+    	</association>	
+    	<association property="newSign" javaType="com.yimi.miscloud.common.entity.response.cckpi.NewSign" select="selectNewSign"
+    		autoMapping="true" column="{startDate=startDate,endDate=endDate,userId=userId,orgId=orgId,listMoudle=listMoudle6}">
+    	</association>	
+    	<association property="refund" javaType="com.yimi.miscloud.common.entity.response.cckpi.Refund" select="selectRefund"
+    		autoMapping="true" column="{startDate=startDate,endDate=endDate,userId=userId,orgId=orgId,listMoudle=listMoudle7}">
+    	</association>	
+    </resultMap>
+    <select id="selectTelephoneConversation" resultType="com.yimi.miscloud.common.entity.response.cckpi.TelephoneConversation">
+		<if test='listMoudle == "TELEPHONE_CONVERSATION"'>
+	    	SELECT 
+	    	ifnull(SUM(if(operStatusFid=1,1,0)),0) dialNum,ifnull(SUM(if(operStatusFid=3,1,0)),0) connectNum,ifnull(SUM(if(log1.operStatusFid=4,
+			TIMESTAMPDIFF(SECOND,(SELECT log2.createdOn FROM callcenter_outer_log log2 WHERE log2.createdByFid = log1.createdByFid 
+			AND log2.logId <![CDATA[<]]> log1.logId AND log2.operStatusFid=3 ORDER BY log2.logId DESC LIMIT 1),log1.createdOn),0)),0) callDuration
+			FROM 
+			callcenter_outer_log log1 WHERE
+			<if test="userId != null">
+				log1.createdByFid=#{userId} 
+			</if>
+			<if test="orgId != null">
+				exists(
+		            select 1 from mis_user_prop where log1.createdByFid in(select fid from
+		            mis_user_prop where FIND_IN_SET(propId,f_query_children_org_ids(#{orgId}))
+		            and date(beginTime)<![CDATA[<=]]>#{endDate} and (endTime is null or date(endTime)<![CDATA[>=]]>#{startDate})
+		            and log1.createdOn > beginTime and (endTime is null or endTime>log1.createdOn)
+		            )
+		            and fid=log1.createdByFid 
+	            )
+			</if>
+			AND date(log1.createdOn) BETWEEN #{startDate} AND #{endDate};
+  		</if>
+		<if test='listMoudle == null'>
+	    	SELECT null;
+  		</if>
+    </select>
+    <select id="selectClientComponent" resultType="com.yimi.miscloud.common.entity.response.cckpi.ClientComponent">
+		<if test='listMoudle == "CLIENT_COMPONENT"'>
+			SELECT 
+			t1.*,t2.*
+			FROM 
+			(
+				SELECT 
+				COUNT(DISTINCT clientId) innerSeaNum,ifnull(SUM(IF(flag like 'A%',1,0)),0) innerSeaANum,
+				ifnull(SUM(IF(flag = 'B',1,0)),0) innerSeaBNum FROM erp_clients WHERE
+					<if test="userId != null">
+						consultantId=#{userId} 
+					</if>
+					<if test="orgId != null">
+						exists(
+				             SELECT 1 FROM mis_user_prop WHERE fid=consultantId AND
+								 endTime IS NULL
+							AND FIND_IN_SET(propId,f_query_children_org_ids (#{orgId}))
+			            )
+					</if>
+			) t1,
+			(
+				SELECT 
+				ifnull(SUM(IF(memo like '领取领海%',1,0)),0) territorialSeaNum,ifnull(SUM(IF(memo like '领取领海%' AND flag in ('A1','A2','A'),1,0)),0) territorialSeaANum,
+				ifnull(SUM(IF(memo like '领取领海%' AND flag = 'B',1,0)),0) territorialSeaBNum,ifnull(SUM(IF(memo like '领取公海%',1,0)),0) publicSeaNum
+					FROM (
+					SELECT DISTINCT clientFid,crFid,IF(memo LIKE '领取领海%','领取领海',memo) memo FROM erp_client_cr WHERE
+							<if test="userId != null">
+								crFid=#{userId} 
+							</if>
+							<if test="orgId != null">
+								exists(
+									 SELECT 1 FROM mis_user_prop WHERE fid=crFid AND DATE(beginTime) <![CDATA[<=]]> #{endDate} AND (endTime is null 
+									 OR DATE(endTime) >= #{startDate} ) AND createdOn > beginTime
+											 AND (
+											 endTime IS NULL
+											 OR endTime > createdOn
+											 )
+										AND FIND_IN_SET(propId,f_query_children_org_ids (#{orgId}))
+					            )
+							</if>
+							AND date(createdOn) BETWEEN #{startDate} AND #{endDate}
+					) temp1 JOIN erp_clients ON temp1.clientFid=erp_clients.clientId
+			) t2
+			<!-- (SELECT DISTINCT * FROM((SELECT clientFid,crFid,IF(memo LIKE '领取领海%','领取领海',memo) memo FROM erp_client_cr WHERE
+			<if test="userId != null">
+				crFid=#{userId} 
+			</if>
+			<if test="orgId != null">
+				exists(
+					 SELECT 1 FROM mis_user_prop WHERE fid=crFid AND DATE(beginTime) <![CDATA[<=]]> #{endDate} AND (endTime is null 
+					 OR DATE(endTime) >= #{startDate} ) AND createdOn > beginTime
+							 AND (
+							 endTime IS NULL
+							 OR endTime > createdOn
+							 )
+						AND FIND_IN_SET(propId,f_query_children_org_ids (#{orgId}))
+	            )
+			</if>
+			AND date(createdOn) BETWEEN #{startDate} AND #{endDate}) )t)erp_client_cr
+			LEFT JOIN erp_clients ON erp_client_cr.clientFid=erp_clients.clientId; -->
+  		</if>
+		<if test='listMoudle == null'>
+	    	SELECT null;
+  		</if>
+    </select>
+<!--     <select id="selectClientComponent" resultType="com.yimi.miscloud.common.entity.response.cckpi.ClientComponent">
+		<if test='listMoudle2 == "CLIENT_COMPONENT"'>
+			SELECT 
+			ifnull(SUM(IF(memo like '领取领海%',1,0)),0)territorialSeaNum,ifnull(SUM(IF(memo like '领取领海%' AND flag in ('A1','A2'),1,0)),0)territorialSeaANum,
+			ifnull(SUM(IF(memo like '领取领海%' AND flag = 'B',1,0)),0)territorialSeaBNum,ifnull(SUM(IF(memo like '领取公海',1,0)),0)publicSeaNum,t.*
+			FROM 
+			(SELECT COUNT(DISTINCT clientId) innerSeaNum,ifnull(SUM(IF(flag = 'A2' OR flag = 'A1',1,0)),0) innerSeaANum,
+			ifnull(SUM(IF(flag = 'B',1,0)),0) innerSeaBNum FROM erp_clients WHERE consultantId = #{userId}) t,
+			(SELECT DISTINCT * FROM((SELECT clientFid,crFid,IF(memo LIKE '领取领海%','领取领海',memo) memo FROM erp_client_cr WHERE crFid=#{userId} 
+			AND createdOn BETWEEN #{beginTime} AND #{endTime}) )t)erp_client_cr
+			LEFT JOIN erp_clients ON erp_client_cr.clientFid=erp_clients.clientId;
+  		</if>
+		<if test='listMoudle2 == null'>
+	    	SELECT null;
+  		</if>
+    </select> -->
+    <select id="selectAppointment" resultType="com.yimi.miscloud.common.entity.response.cckpi.Appointment">
+		<if test='listMoudle == "APPOINTMENT"'>
+			SELECT temp1.*,temp2.*,temp3.*,temp4.*
+			<if test="startDate == endDate">
+			,temp5.*
+			</if>
+			from
+			(	SELECT COUNT(DISTINCT clientId) demonstrationNum FROM erp_lessons INNER JOIN erp_lesson_flow ON erp_lessons.lessonId=erp_lesson_flow.lessonFid
+				WHERE lessonType = 0 AND subjectId = 0 AND contractId = 0
+				AND erp_lesson_flow.createdByFid != 0  AND erp_lessons.lessonStatus = 1
+				and date(startTime) BETWEEN #{startDate} AND #{endDate} 
+				<!-- AND erp_lesson_flow.createdByFid = #{userId} -->
+				<if test="userId != null">
+					and erp_lesson_flow.createdByFid = #{userId} 
+				</if>
+				<if test="orgId != null">
+					and exists(
+						 SELECT 1 FROM mis_user_prop WHERE fid=erp_lesson_flow.createdByFid 
+						 AND DATE(beginTime) <![CDATA[<=]]> #{endDate} AND (endTime is null OR DATE(endTime) >= #{startDate} ) 
+						 AND startTime > beginTime AND (endTime IS NULL OR endTime > startTime)
+						 AND FIND_IN_SET(propId,f_query_children_org_ids (#{orgId}))
+					)
+				</if>
+			)temp1,
+			(	SELECT COUNT(DISTINCT clientFid) appointmentApplyNum FROM erp_lesson_application 
+				WHERE tryProperty = 0 AND tryType = 0 AND date(createdOn) BETWEEN #{startDate} AND #{endDate}
+				<!-- AND belongToFid = #{userId} -->
+				<if test="userId != null">
+					and belongToFid = #{userId} 
+				</if>
+				<if test="orgId != null">
+					and exists(
+						 SELECT 1 FROM mis_user_prop WHERE fid=belongToFid 
+						 AND DATE(beginTime) <![CDATA[<=]]> #{endDate} AND (endTime is null OR DATE(endTime) >= #{startDate} ) 
+						 AND createdOn > beginTime AND (endTime IS NULL OR endTime > createdOn)
+						 AND FIND_IN_SET(propId,f_query_children_org_ids (#{orgId}))
+					)
+				</if>
+			)temp2,
+			(	SELECT COUNT(DISTINCT erp_lessons.clientId) appointmentArrangeNum 
+				FROM erp_lesson_application INNER JOIN erp_lessons ON erp_lesson_application.lessonId=erp_lessons.lessonId
+				WHERE erp_lesson_application.tryProperty = 0 AND erp_lesson_application.tryType = 0 
+				AND date(erp_lessons.startTime) BETWEEN #{startDate} AND #{endDate}
+				<!-- AND erp_lesson_application.belongToFid = #{userId} -->
+				<if test="userId != null">
+					and erp_lesson_application.belongToFid = #{userId}
+				</if>
+				<if test="orgId != null">
+					and exists(
+						 SELECT 1 FROM mis_user_prop WHERE fid=erp_lesson_application.belongToFid
+						 AND DATE(beginTime) <![CDATA[<=]]> #{endDate} AND (endTime is null OR DATE(endTime) >= #{startDate} ) 
+						 AND erp_lessons.startTime > beginTime AND (endTime IS NULL OR endTime > erp_lessons.startTime)
+						 AND FIND_IN_SET(propId,f_query_children_org_ids (#{orgId}))
+					)
+				</if>
+			)temp3,
+			(	SELECT 
+				COUNT(DISTINCT erp_lessons.clientId) appointmentArrangeNumIn30Days
+				FROM 
+				erp_lesson_application INNER JOIN erp_lessons ON erp_lesson_application.lessonId=erp_lessons.lessonId
+				INNER JOIN erp_client_cr ON erp_client_cr.clientFid = erp_lesson_application.clientFid AND erp_client_cr.crFid = erp_lesson_application.belongToFid
+				WHERE erp_lesson_application.tryProperty = 0 AND erp_lesson_application.tryType = 0 
+				AND DATEDIFF(erp_lessons.startTime,erp_client_cr.beginTime) <![CDATA[<]]> 30
+				AND erp_lessons.startTime BETWEEN erp_client_cr.beginTime AND IFNULL(erp_client_cr.endTime,'2099-12-31 23:59:59')
+				AND date(erp_lessons.startTime) BETWEEN #{startDate} AND #{endDate}
+				<!-- AND erp_lesson_application.belongToFid = #{userId} -->
+				<if test="userId != null">
+					and erp_lesson_application.belongToFid = #{userId}
+				</if>
+				<if test="orgId != null">
+					and exists(
+						 SELECT 1 FROM mis_user_prop WHERE fid=erp_lesson_application.belongToFid
+						 AND DATE(beginTime) <![CDATA[<=]]> #{endDate} AND (endTime is null OR DATE(endTime) >= #{startDate} ) 
+						 AND erp_lessons.startTime > beginTime AND (endTime IS NULL OR endTime > erp_lessons.startTime)
+						 AND FIND_IN_SET(propId,f_query_children_org_ids (#{orgId}))
+					)
+				</if>
+			)temp4
+			<if test="startDate == endDate">
+				,(	SELECT  
+					MAX(CASE WHEN date=DATE_ADD(#{startDate},INTERVAL 1 DAY) THEN num ELSE 0 END) appointmentArrangeNumInTomorrow,
+					MAX(CASE WHEN date=DATE_ADD(#{startDate},INTERVAL 2 DAY) THEN num ELSE 0 END) appointmentArrangeNumInTheDayAfterTomorrow,
+					MAX(CASE WHEN date=DATE_ADD(#{startDate},INTERVAL 3 DAY) THEN num ELSE 0 END) appointmentArrangeNumInThreeDaysFromNow,
+					MAX(CASE WHEN date IS NULL THEN num ELSE 0 END) appointmentArrangeNumInFurture3Days
+					FROM (
+					SELECT 
+					DATE(erp_lessons.startTime) date,COUNT(DISTINCT erp_lessons.clientId) num
+					FROM 
+					erp_lesson_application INNER JOIN erp_lessons ON erp_lesson_application.lessonId=erp_lessons.lessonId
+					INNER JOIN erp_client_cr ON erp_client_cr.clientFid = erp_lesson_application.clientFid AND erp_client_cr.crFid = erp_lesson_application.belongToFid
+					WHERE 
+					erp_lesson_application.tryProperty = 0 AND erp_lesson_application.tryType = 0 
+					AND DATEDIFF(erp_lessons.startTime,#{startDate}) BETWEEN 1 AND 3
+					<!-- AND erp_lesson_application.belongToFid = #{userId} -->
+					<if test="userId != null">
+						and erp_lesson_application.belongToFid = #{userId}
+					</if>
+					<if test="orgId != null">
+						and exists(
+							 SELECT 1 FROM mis_user_prop WHERE fid=erp_lesson_application.belongToFid
+							 AND DATE(beginTime) <![CDATA[<=]]> #{endDate} AND (endTime is null OR DATE(endTime) >= #{startDate} ) 
+							 AND erp_lessons.startTime > beginTime AND (endTime IS NULL OR endTime > erp_lessons.startTime)
+							 AND FIND_IN_SET(propId,f_query_children_org_ids (#{orgId}))
+						)
+					</if>
+					AND erp_lessons.startTime BETWEEN erp_client_cr.beginTime AND IFNULL(erp_client_cr.endTime,'2099-12-31 23:59:59')
+					GROUP BY DATE(erp_lessons.startTime) WITH ROLLUP) t1
+				)temp5
+			</if>
+  		</if>
+		<if test='listMoudle == null'>
+	    	SELECT null;
+  		</if>
+    </select>
+    <select id="selectAttend" resultType="com.yimi.miscloud.common.entity.response.cckpi.Attend">
+		<if test='listMoudle == "ATTEND"'>
+	    	SELECT temp1.*<!-- ,temp2.* -->
+			from
+	    	(	SELECT COUNT(DISTINCT erp_lessons.clientId) attendNum FROM erp_lesson_application 
+	    		INNER JOIN erp_lessons ON erp_lesson_application.lessonId=erp_lessons.lessonId
+				WHERE erp_lesson_application.tryProperty = 0 AND erp_lesson_application.tryType = 0 
+				AND erp_lessons.lessonStatus = 1
+				AND date(erp_lessons.startTime) BETWEEN #{startDate} AND #{endDate}
+				<!-- AND erp_lesson_application.belongToFid = #{userId} -->
+				<if test="userId != null">
+					and erp_lesson_application.belongToFid = #{userId}
+				</if>
+				<if test="orgId != null">
+					and exists(
+						 SELECT 1 FROM mis_user_prop WHERE fid=erp_lesson_application.belongToFid
+						 AND DATE(beginTime) <![CDATA[<=]]> #{endDate} AND (endTime is null OR DATE(endTime) >= #{startDate} ) 
+						 AND erp_lessons.startTime > beginTime AND (endTime IS NULL OR endTime > erp_lessons.startTime)
+						 AND FIND_IN_SET(propId,f_query_children_org_ids (#{orgId}))
+					)
+				</if>
+	    	)temp1
+	    	<!-- ,(	SELECT COUNT(DISTINCT erp_lessons.clientId) appointmentArrangeNum FROM erp_lesson_application INNER JOIN erp_lessons ON erp_lesson_application.lessonId=erp_lessons.lessonId
+				WHERE erp_lesson_application.tryProperty = 0 AND erp_lesson_application.tryType = 0 
+				AND date(erp_lessons.startTime) BETWEEN #{startDate} AND #{endDate}
+				AND erp_lesson_application.belongToFid = #{userId}
+				<if test="userId != null">
+					and erp_lesson_application.belongToFid = #{userId}
+				</if>
+				<if test="orgId != null">
+					and exists(
+						 SELECT 1 FROM mis_user_prop WHERE fid=erp_lesson_application.belongToFid
+						 AND DATE(beginTime) <![CDATA[<=]]> #{endDate} AND (endTime is null OR DATE(endTime) >= #{startDate} ) 
+						 AND erp_lessons.startTime > beginTime AND (endTime IS NULL OR endTime > erp_lessons.startTime)
+						 AND FIND_IN_SET(propId,f_query_children_org_ids (#{orgId}))
+					)
+				</if>
+			)temp2 -->
+		</if>
+		<if test='listMoudle == null'>
+	    	SELECT null;
+  		</if>
+    </select>
+    <select id="selectConverseRate" resultType="com.yimi.miscloud.common.entity.response.cckpi.ConverseRate">
+		<if test='listMoudle == "CONVERSE_RATE"'>
+			select t1.*,t2.*
+			from 
+				 (select
+		         ifnull(sum(if(cooperateConsultantFid = 0,1,0)),0) newSignedContractNumWithoutDemoCC,
+		         ifnull(sum(if(
+			        <if test="userId != null">
+			            (o.belongToFid=#{userId} and o.cooperateConsultantFid>0)
+			        </if>
+			        <if test="orgId != null">
+			            (FIND_IN_SET(o.belongToOrgFid,f_query_children_org_ids (#{orgId})) and o.cooperateConsultantFid>0)
+			        </if>
+		         ,1,0)),0) newSignedContractNumWithDemoCC,    
+		         ifnull(sum(if(
+			        <if test="userId != null">
+			            (o.cooperateConsultantFid=#{userId})
+			        </if>
+			        <if test="orgId != null">
+			            (FIND_IN_SET(o.cooperateOrgFid,f_query_children_org_ids (#{orgId})))
+			        </if>
+		         ,1,0)),0) newSignedContractNumAsDemoCC   
+		         from
+		         erp_contract o where o.contractFlag='N'
+		        <if test="userId != null">
+		            and (o.belongToFid=#{userId} or o.cooperateConsultantFid=#{userId})
+		        </if>
+		        <if test="orgId != null">
+		            and (FIND_IN_SET(o.belongToOrgFid,f_query_children_org_ids (#{orgId})) or FIND_IN_SET(o.cooperateOrgFid,f_query_children_org_ids (#{orgId})))
+		        </if>
+		        and isPaid=1 and date(payTime) between #{startDate} and #{endDate} and contractProp=1
+		        ) t1,
+		        (	
+		        SELECT 
+		         ifnull(sum(if(cooperateConsultantFid = 0,1,0)),0) attendNumWithoutDemoCC,
+		         ifnull(sum(if(
+			        <if test="userId != null">
+			            (belongToFid=#{userId} and cooperateConsultantFid>0)
+			        </if>
+			        <if test="orgId != null">
+			        	(
+						 SELECT 1 FROM mis_user_prop WHERE fid=belongToFid
+						 AND DATE(beginTime) <![CDATA[<=]]> #{endDate} AND (endTime is null OR DATE(endTime) >= #{startDate} ) 
+						 AND startTime > beginTime AND (endTime IS NULL OR endTime > startTime)
+						 AND FIND_IN_SET(propId,f_query_children_org_ids (#{orgId}))
+						 AND cooperateConsultantFid>0)
+			        </if>
+		         ,1,0)),0) attendNumWithDemoCC,    
+		         ifnull(sum(if(
+			        <if test="userId != null">
+			            (cooperateConsultantFid=#{userId})
+			        </if>
+			        <if test="orgId != null">
+			        	(
+						 SELECT 1 FROM mis_user_prop WHERE fid=cooperateConsultantFid
+						 AND DATE(beginTime) <![CDATA[<=]]> #{endDate} AND (endTime is null OR DATE(endTime) >= #{startDate} ) 
+						 AND startTime > beginTime AND (endTime IS NULL OR endTime > startTime)
+						 AND FIND_IN_SET(propId,f_query_children_org_ids (#{orgId}))
+						)
+			        </if>
+		         ,1,0)),0) attendNumAsDemoCC   
+		        from(
+			        select erp_lesson_application.clientFid,erp_lesson_application.belongToFid,erp_lesson_application.cooperateConsultantFid,erp_lessons.startTime
+			        FROM erp_lesson_application INNER JOIN erp_lessons ON erp_lesson_application.lessonId=erp_lessons.lessonId
+					WHERE erp_lesson_application.tryProperty = 0 AND erp_lesson_application.tryType = 0 
+					AND date(erp_lessons.startTime) BETWEEN #{startDate} AND #{endDate} AND erp_lessons.lessonStatus = 1
+					<!-- AND erp_lesson_application.belongToFid = #{userId} -->
+					<if test="userId != null">
+						and (erp_lesson_application.belongToFid = #{userId} or erp_lesson_application.cooperateConsultantFid = #{userId})
+					</if>
+					<if test="orgId != null">
+						and exists(
+							 SELECT 1 FROM mis_user_prop WHERE (fid=erp_lesson_application.belongToFid or fid=erp_lesson_application.cooperateConsultantFid)
+							 AND DATE(beginTime) <![CDATA[<=]]> #{endDate} AND (endTime is null OR DATE(endTime) >= #{startDate} ) 
+							 AND erp_lessons.startTime > beginTime AND (endTime IS NULL OR endTime > erp_lessons.startTime)
+							 AND FIND_IN_SET(propId,f_query_children_org_ids (#{orgId}))
+						)
+					</if>
+					group by erp_lesson_application.clientFid
+					) temp1
+				)t2
+		        
+		</if>
+		<if test='listMoudle == null'>
+	    	SELECT null;
+  		</if>
+    </select>
+    <select id="selectNewSign" resultType="com.yimi.miscloud.common.entity.response.cckpi.NewSign">
+		<if test='listMoudle == "NEW_SIGN"'>
+			select t1.*,t2.*
+			from 
+				 (select
+		         <!-- count(distinct clientFid) newStudentCount, -->
+		         ifnull(sum(if(cooperateConsultantFid > 0,paidPrice/2,paidPrice)),0) newSignedAmount,
+		         ifnull(sum(if(cooperateConsultantFid > 0,totalLessonCount/2,totalLessonCount)),0) newSignedCourseHours        
+		         from
+		         erp_contract o where o.contractFlag='N'
+		        <if test="userId != null">
+		            and (o.belongToFid=#{userId} or o.cooperateConsultantFid=#{userId})
+		        </if>
+		        <if test="orgId != null">
+		            and (FIND_IN_SET(o.belongToOrgFid,f_query_children_org_ids (#{orgId})) or FIND_IN_SET(o.cooperateOrgFid,f_query_children_org_ids (#{orgId})))
+		        </if>
+		        and isPaid=1 and date(payTime) between #{startDate} and #{endDate} and contractProp=1
+		        ) t1,
+		        (select
+		         ifnull(sum(if(cooperateConsultantFid > 0,0.5,1)),0) newSignedNum
+		         from(
+		         select clientFid,cooperateConsultantFid
+		         from
+		         erp_contract o where o.contractFlag='N'
+		        <if test="userId != null">
+		            and (o.belongToFid=#{userId} or o.cooperateConsultantFid=#{userId})
+		        </if>
+		        <if test="orgId != null">
+		            and (FIND_IN_SET(o.belongToOrgFid,f_query_children_org_ids (#{orgId})) or FIND_IN_SET(o.cooperateOrgFid,f_query_children_org_ids (#{orgId})))
+		        </if>
+		        and isPaid=1 and date(payTime) between #{startDate} and #{endDate} and contractProp=1
+		        group by clientFid
+		        ) tt
+		        )t2
+		</if>
+		<if test='listMoudle == null'>
+	    	SELECT null;
+  		</if>
+    </select>
+    <select id="selectRefund" resultType="com.yimi.miscloud.common.entity.response.cckpi.Refund">
+		<if test='listMoudle == "REFUND"'>
+	        select 
+	        ifnull(sum(if(re.cooperateConsultantFid>0,0.5,1)),0) refundContractNum,
+	        ifnull(sum(if(re.cooperateConsultantFid>0,belongCCPrice/2,belongCCPrice)),0) refundAmount,
+	        ifnull(sum(if(re.cooperateConsultantFid>0,belongCCLessonCount/2,belongCCLessonCount)),0) refundCourseHours
+	        from
+	        erp_contract o inner join erp_contract_refund re on o.contractId=re.contractFid and o.contractFlag='N'
+	        where
+	        <if test="userId != null">
+				(re.belongToFid=#{userId} or re.cooperateConsultantFid=#{userId})
+			</if>
+			<if test="orgId != null">
+	            (FIND_IN_SET(re.belongToOrgFid,f_query_children_org_ids (#{orgId})) or FIND_IN_SET(re.cooperateOrgFid,f_query_children_org_ids (#{orgId})))
+			</if>
+	        and o.isPaid = 1
+	        and date(refundTime) between #{startDate} and #{endDate}        
+		</if>
+		<if test='listMoudle == null'>
+	    	SELECT null;
+  		</if>
+    </select>
+</mapper>

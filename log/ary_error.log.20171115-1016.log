@@ -1,0 +1,35 @@
+2017-11-15 10:00:45,311 - root - excel_wr.py[line:37] - ERROR >>> 数据错误
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 35, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 58, in check_data
+    if excel['function'].upeer() == '':
+AttributeError: 'float' object has no attribute 'upeer'
+2017-11-15 10:00:45,314 - root - excel_wr.py[line:37] - ERROR >>> 数据错误
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 35, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 58, in check_data
+    if excel['function'].upeer() == '':
+AttributeError: 'str' object has no attribute 'upeer'
+2017-11-15 10:01:29,343 - root - excel_wr.py[line:37] - ERROR >>> 数据错误
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 35, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 58, in check_data
+    if excel['function'].upeer() == '':
+AttributeError: 'float' object has no attribute 'upeer'
+2017-11-15 10:04:06,651 - root - excel_wr.py[line:38] - ERROR >>> 数据错误:当前行：1  当前列：4  值：{'id': 0.0, 'function': 1.0, 'path': 2.0, 'value': 3.0, 'memo': 4.0}
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 36, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 61, in check_data
+    if excel['function'].upeer() == '':
+AttributeError: 'float' object has no attribute 'upeer'
+2017-11-15 10:16:40,315 - root - excel_wr.py[line:38] - ERROR >>> 数据错误:当前行：1  当前行数据：{'id': 0.0, 'operation': 'click', 'path': 2.0, 'value': 3.0, 'dp': '', 'memo': 4.0}
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 36, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 61, in check_data
+    if excel['operation'].upeer() in operation_list:
+AttributeError: 'str' object has no attribute 'upeer'

@@ -1,0 +1,134 @@
+2017-11-16 14:12:36,040 - root - execution_case.py[line:27] - ERROR >>> 错误用例：行数-test_row_1  数据：OPEN
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 14:12:36,076 - root - execution_case.py[line:27] - ERROR >>> 错误用例：行数-test_row_2  数据：TYPE
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 14:12:36,076 - root - execution_case.py[line:27] - ERROR >>> 错误用例：行数-test_row_3  数据：CLICK
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 14:12:36,077 - root - execution_case.py[line:27] - ERROR >>> 错误用例：行数-test_row_4  数据：SLEEP
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 14:12:36,078 - root - execution_case.py[line:27] - ERROR >>> 错误用例：行数-test_row_5  数据：QUIT
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 14:13:12,669 - root - execution_case.py[line:27] - ERROR >>> 错误用例：行数 - 1  数据：OPEN
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 14:13:12,670 - root - execution_case.py[line:27] - ERROR >>> 错误用例：行数 - 2  数据：TYPE
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 14:13:12,670 - root - execution_case.py[line:27] - ERROR >>> 错误用例：行数 - 3  数据：CLICK
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 14:13:12,671 - root - execution_case.py[line:27] - ERROR >>> 错误用例：行数 - 4  数据：SLEEP
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 14:13:12,671 - root - execution_case.py[line:27] - ERROR >>> 错误用例：行数 - 5  数据：QUIT
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 14:13:49,893 - root - execution_case.py[line:27] - ERROR >>> 错误用例：行数 - 1  数据：OPEN
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 14:14:48,494 - root - execution_case.py[line:28] - ERROR >>> 错误用例：行数 - 1  数据：OPENhttps://www.baidu.com/
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 14:15:18,173 - root - execution_case.py[line:28] - ERROR >>> 错误用例：行数 - 1  数据：OPEN    https://www.baidu.com/    
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 14:15:42,538 - root - execution_case.py[line:28] - ERROR >>> 错误用例：行数 - 1  数据：OPEN        https://www.baidu.com/    
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 25, in exe_cases
+    a = 1/0
+ZeroDivisionError: division by zero
+2017-11-16 18:04:24,086 - root - execution_case.py[line:33] - ERROR >>> 执行用例失败，错误用例：行数 - 8  数据：CLICK    /html/body/div[1]/div[2]/div/ul/li[2]/ul/li[1]/a        
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 28, in exe_cases
+    exe_case(driver=driver, operation=operation, path=path, value=value, dp=dp)
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 56, in exe_case
+    driver.click(path)
+  File "D:\yimi_work\yimi_auto_test\utils\ary.py", line 99, in click
+    self.element_wait(xpath)
+  File "D:\yimi_work\yimi_auto_test\utils\ary.py", line 35, in element_wait
+    WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
+  File "C:\Users\suMs\AppData\Local\Programs\Python\Python36-32\lib\site-packages\selenium\webdriver\support\wait.py", line 71, in until
+    value = method(self._driver)
+  File "C:\Users\suMs\AppData\Local\Programs\Python\Python36-32\lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 111, in __call__
+    return _find_elements(driver, self.locator)
+  File "C:\Users\suMs\AppData\Local\Programs\Python\Python36-32\lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 339, in _find_elements
+    raise e
+  File "C:\Users\suMs\AppData\Local\Programs\Python\Python36-32\lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 337, in _find_elements
+    return driver.find_elements(*by)
+  File "C:\Users\suMs\AppData\Local\Programs\Python\Python36-32\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 782, in find_elements
+    'value': value})['value']
+  File "C:\Users\suMs\AppData\Local\Programs\Python\Python36-32\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 238, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\suMs\AppData\Local\Programs\Python\Python36-32\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 193, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=55.0.2883.87)
+  (Driver info: chromedriver=2.25.426923 (0390b88869384d6eb0d5d09729679f934aab9eed),platform=Windows NT 10.0.14393 x86_64)
+
+2017-11-17 10:37:57,892 - root - execution_case.py[line:33] - ERROR >>> 执行用例失败，错误用例：行数 - 1  数据：        https://www.baidu.com/    
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 28, in exe_cases
+    exe_case(driver=driver, operation=operation, path=path, value=value, dp=dp)
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 123, in exe_case
+    raise BaseException('错误的操作')
+BaseException: 错误的操作
+2017-11-17 10:39:39,004 - root - execution_case.py[line:36] - ERROR >>> 执行用例失败，错误用例：行数 - 1  数据：operation:    path:    value:https://www.baidu.com/    dp:
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 28, in exe_cases
+    exe_case(driver=driver, operation=operation, path=path, value=value, dp=dp)
+  File "D:\yimi_work\yimi_auto_test\utils\execution_case.py", line 126, in exe_case
+    raise BaseException('错误的操作')
+BaseException: 错误的操作
+2017-11-17 11:31:33,592 - root - host_connect.py[line:37] - ERROR >>> host更新失败： prod
+2017-11-17 13:22:22,223 - root - excel_wr.py[line:38] - ERROR >>> 数据错误:当前行：1  当前行数据：{'id': 0.0, 'operation': 'open', 'path': '', 'value': 'http://mis.1mifudao.com/', 'dp': '', 'memo': '打开mis'}
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 36, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 61, in check_data
+    raise BaseException('用例错误，存在错误的操作')
+BaseException: 用例错误，存在错误的操作
+2017-11-17 13:22:53,326 - root - excel_wr.py[line:38] - ERROR >>> 数据错误:当前行：1  当前行数据：{'id': 0.0, 'operation': 'open', 'path': '', 'value': 'http://mis.1mifudao.com/', 'dp': '', 'memo': '打开mis'}
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 36, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 61, in check_data
+    raise BaseException('用例错误，存在错误的操作')
+BaseException: 用例错误，存在错误的操作
+2017-11-17 13:23:17,889 - root - excel_wr.py[line:38] - ERROR >>> 数据错误:当前行：1  当前行数据：{'id': 0.0, 'operation': 'open', 'path': '', 'value': 'http://mis.1mifudao.com/', 'dp': '', 'memo': '打开mis'}
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 36, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 61, in check_data
+    raise BaseException('用例错误，存在错误的操作')
+BaseException: 用例错误，存在错误的操作

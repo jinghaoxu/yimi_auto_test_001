@@ -1,0 +1,148 @@
+2017-11-15 09:51:36,736 - root - excel_wr.py[line:48] - INFO >>> 用例正常
+2017-11-15 09:54:27,975 - root - excel_wr.py[line:45] - INFO >>> 用例列数错误：标准列数：5，当前列数：6
+2017-11-15 09:54:45,544 - root - excel_wr.py[line:48] - INFO >>> 用例正常
+2017-11-15 09:59:00,507 - root - excel_wr.py[line:50] - INFO >>> 用例正常
+2017-11-15 09:59:27,541 - root - excel_wr.py[line:50] - INFO >>> 用例正常
+2017-11-15 10:00:45,310 - root - excel_wr.py[line:53] - INFO >>> 用例正常
+2017-11-15 10:00:45,311 - root - excel_wr.py[line:37] - ERROR >>> 数据错误
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 35, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 58, in check_data
+    if excel['function'].upeer() == '':
+AttributeError: 'float' object has no attribute 'upeer'
+2017-11-15 10:00:45,314 - root - excel_wr.py[line:37] - ERROR >>> 数据错误
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 35, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 58, in check_data
+    if excel['function'].upeer() == '':
+AttributeError: 'str' object has no attribute 'upeer'
+2017-11-15 10:01:29,343 - root - excel_wr.py[line:37] - ERROR >>> 数据错误
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 35, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 58, in check_data
+    if excel['function'].upeer() == '':
+AttributeError: 'float' object has no attribute 'upeer'
+2017-11-15 10:04:06,651 - root - excel_wr.py[line:38] - ERROR >>> 数据错误:当前行：1  当前列：4  值：{'id': 0.0, 'function': 1.0, 'path': 2.0, 'value': 3.0, 'memo': 4.0}
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 36, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 61, in check_data
+    if excel['function'].upeer() == '':
+AttributeError: 'float' object has no attribute 'upeer'
+2017-11-15 10:16:30,431 - root - excel_wr.py[line:53] - INFO >>> 用例列数错误：标准列数：5，当前列数：6
+2017-11-15 10:16:40,315 - root - excel_wr.py[line:38] - ERROR >>> 数据错误:当前行：1  当前行数据：{'id': 0.0, 'operation': 'click', 'path': 2.0, 'value': 3.0, 'dp': '', 'memo': 4.0}
+Traceback (most recent call last):
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 36, in rexcel
+    check_data(dictdata)
+  File "D:\yimi_work\yimi_auto_test\utils\excel_wr.py", line 61, in check_data
+    if excel['operation'].upeer() in operation_list:
+AttributeError: 'str' object has no attribute 'upeer'
+2017-11-15 10:55:20,305 - root - ary.py[line:22] - INFO >>> 开始打开chrome浏览器
+2017-11-15 10:55:22,908 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52374/session {"desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "javascriptEnabled": true, "chromeOptions": {"extensions": [], "args": []}}, "requiredCapabilities": {}}
+2017-11-15 10:55:24,711 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 10:55:24,712 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> GET http://127.0.0.1:52374/session/6a4b671f89b480631b3ee0e24251839d/url {"sessionId": "6a4b671f89b480631b3ee0e24251839d"}
+2017-11-15 10:55:24,819 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 10:55:24,819 - root - ary.py[line:30] - INFO >>> 打开浏览器成功
+2017-11-15 10:58:11,953 - root - ary.py[line:22] - INFO >>> 开始打开chrome浏览器
+2017-11-15 10:58:13,976 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52545/session {"desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "javascriptEnabled": true, "chromeOptions": {"extensions": [], "args": []}}, "requiredCapabilities": {}}
+2017-11-15 10:58:15,694 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 10:58:15,694 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> GET http://127.0.0.1:52545/session/4ab319624c79cff60c51ebdbd50aac0a/url {"sessionId": "4ab319624c79cff60c51ebdbd50aac0a"}
+2017-11-15 10:58:15,712 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 10:58:15,712 - root - ary.py[line:30] - INFO >>> 打开浏览器成功
+2017-11-15 10:58:40,170 - root - ary.py[line:22] - INFO >>> 开始打开chrome浏览器
+2017-11-15 10:58:42,193 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52562/session {"desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "javascriptEnabled": true, "chromeOptions": {"extensions": [], "args": []}}, "requiredCapabilities": {}}
+2017-11-15 10:58:43,863 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 10:58:43,863 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> GET http://127.0.0.1:52562/session/8d8c7ddce704e2ad1cd7e52f4d24cd6a/url {"sessionId": "8d8c7ddce704e2ad1cd7e52f4d24cd6a"}
+2017-11-15 10:58:43,887 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 10:58:43,887 - root - ary.py[line:30] - INFO >>> 打开浏览器成功
+2017-11-15 10:58:43,905 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52562/session/8d8c7ddce704e2ad1cd7e52f4d24cd6a/window/current/maximize {"windowHandle": "current", "sessionId": "8d8c7ddce704e2ad1cd7e52f4d24cd6a"}
+2017-11-15 10:58:45,070 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 10:58:45,070 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52562/session/8d8c7ddce704e2ad1cd7e52f4d24cd6a/url {"url": "https://www.baidu.com/", "sessionId": "8d8c7ddce704e2ad1cd7e52f4d24cd6a"}
+2017-11-15 10:58:46,822 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 10:58:47,324 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52562/session/8d8c7ddce704e2ad1cd7e52f4d24cd6a/elements {"using": "xpath", "value": "//*[@id=\"kw\"]", "sessionId": "8d8c7ddce704e2ad1cd7e52f4d24cd6a"}
+2017-11-15 10:58:47,339 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 10:58:47,339 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52562/session/8d8c7ddce704e2ad1cd7e52f4d24cd6a/element {"using": "xpath", "value": "//*[@id=\"kw\"]", "sessionId": "8d8c7ddce704e2ad1cd7e52f4d24cd6a"}
+2017-11-15 10:58:47,352 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:06:11,075 - root - ary.py[line:22] - INFO >>> 开始打开chrome浏览器
+2017-11-15 11:06:13,099 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52952/session {"desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "javascriptEnabled": true, "chromeOptions": {"extensions": [], "args": []}}, "requiredCapabilities": {}}
+2017-11-15 11:06:14,823 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:06:14,824 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> GET http://127.0.0.1:52952/session/5e52df566666beb412dd668183920b40/url {"sessionId": "5e52df566666beb412dd668183920b40"}
+2017-11-15 11:06:14,846 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:06:14,846 - root - ary.py[line:30] - INFO >>> 打开浏览器成功
+2017-11-15 11:06:14,866 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52952/session/5e52df566666beb412dd668183920b40/window/current/maximize {"windowHandle": "current", "sessionId": "5e52df566666beb412dd668183920b40"}
+2017-11-15 11:06:16,013 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:06:16,013 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52952/session/5e52df566666beb412dd668183920b40/url {"url": "https://www.baidu.com/", "sessionId": "5e52df566666beb412dd668183920b40"}
+2017-11-15 11:06:17,245 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:06:17,746 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52952/session/5e52df566666beb412dd668183920b40/elements {"using": "xpath", "value": "//*[@id=\"kw\"]", "sessionId": "5e52df566666beb412dd668183920b40"}
+2017-11-15 11:06:17,761 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:06:17,761 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52952/session/5e52df566666beb412dd668183920b40/element {"using": "xpath", "value": "//*[@id=\"kw\"]", "sessionId": "5e52df566666beb412dd668183920b40"}
+2017-11-15 11:06:17,775 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:06:17,776 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52952/session/5e52df566666beb412dd668183920b40/element/0.4275367617345991-1/value {"value": ["1", "2", "3", "4", "5", "6", "4", "5"], "id": "0.4275367617345991-1", "sessionId": "5e52df566666beb412dd668183920b40"}
+2017-11-15 11:06:17,900 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:06:17,900 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52952/session/5e52df566666beb412dd668183920b40/elements {"using": "xpath", "value": "//*[@id=\"su\"]", "sessionId": "5e52df566666beb412dd668183920b40"}
+2017-11-15 11:06:17,990 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:06:17,991 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52952/session/5e52df566666beb412dd668183920b40/element {"using": "xpath", "value": "//*[@id=\"su\"]", "sessionId": "5e52df566666beb412dd668183920b40"}
+2017-11-15 11:06:18,031 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:06:18,032 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52952/session/5e52df566666beb412dd668183920b40/element {"using": "xpath", "value": "//*[@id=\"su\"]", "sessionId": "5e52df566666beb412dd668183920b40"}
+2017-11-15 11:06:18,039 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:06:18,039 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:52952/session/5e52df566666beb412dd668183920b40/element/0.4275367617345991-2/click {"id": "0.4275367617345991-2", "sessionId": "5e52df566666beb412dd668183920b40"}
+2017-11-15 11:06:18,087 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:06:22,088 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> DELETE http://127.0.0.1:52952/session/5e52df566666beb412dd668183920b40 {"sessionId": "5e52df566666beb412dd668183920b40"}
+2017-11-15 11:06:22,365 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:07:38,970 - root - ary.py[line:22] - INFO >>> 开始打开chrome浏览器
+2017-11-15 11:07:41,005 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53016/session {"desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "javascriptEnabled": true, "chromeOptions": {"extensions": [], "args": []}}, "requiredCapabilities": {}}
+2017-11-15 11:07:42,690 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:07:42,690 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> GET http://127.0.0.1:53016/session/722c3c3513a607198444177fd2023b30/url {"sessionId": "722c3c3513a607198444177fd2023b30"}
+2017-11-15 11:07:42,709 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:07:42,709 - root - ary.py[line:30] - INFO >>> 打开浏览器成功
+2017-11-15 11:07:42,724 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53016/session/722c3c3513a607198444177fd2023b30/window/current/maximize {"windowHandle": "current", "sessionId": "722c3c3513a607198444177fd2023b30"}
+2017-11-15 11:07:43,872 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:07:43,872 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53016/session/722c3c3513a607198444177fd2023b30/url {"url": "https://www.baidu.com/", "sessionId": "722c3c3513a607198444177fd2023b30"}
+2017-11-15 11:07:44,909 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:07:45,409 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53016/session/722c3c3513a607198444177fd2023b30/elements {"using": "xpath", "value": "//*[@id=\"kw\"]", "sessionId": "722c3c3513a607198444177fd2023b30"}
+2017-11-15 11:07:45,423 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:07:45,424 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53016/session/722c3c3513a607198444177fd2023b30/element {"using": "xpath", "value": "//*[@id=\"kw\"]", "sessionId": "722c3c3513a607198444177fd2023b30"}
+2017-11-15 11:07:45,438 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:07:45,439 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53016/session/722c3c3513a607198444177fd2023b30/element/0.25925453234777995-1/value {"value": ["1", "2", "3", "4", "5", "6", "4", "5"], "id": "0.25925453234777995-1", "sessionId": "722c3c3513a607198444177fd2023b30"}
+2017-11-15 11:07:45,543 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:07:45,543 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53016/session/722c3c3513a607198444177fd2023b30/elements {"using": "xpath", "value": "//*[@id=\"su\"]", "sessionId": "722c3c3513a607198444177fd2023b30"}
+2017-11-15 11:07:45,642 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:07:45,642 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53016/session/722c3c3513a607198444177fd2023b30/element {"using": "xpath", "value": "//*[@id=\"su\"]", "sessionId": "722c3c3513a607198444177fd2023b30"}
+2017-11-15 11:07:45,668 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:07:45,668 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53016/session/722c3c3513a607198444177fd2023b30/element {"using": "xpath", "value": "//*[@id=\"su\"]", "sessionId": "722c3c3513a607198444177fd2023b30"}
+2017-11-15 11:07:45,685 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:07:45,686 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53016/session/722c3c3513a607198444177fd2023b30/element/0.25925453234777995-2/click {"id": "0.25925453234777995-2", "sessionId": "722c3c3513a607198444177fd2023b30"}
+2017-11-15 11:07:45,723 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:07:49,724 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> DELETE http://127.0.0.1:53016/session/722c3c3513a607198444177fd2023b30 {"sessionId": "722c3c3513a607198444177fd2023b30"}
+2017-11-15 11:07:49,883 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:07:52,890 - root - execution_case.py[line:41] - INFO >>> 执行用例成功
+2017-11-15 11:11:54,785 - root - ary.py[line:22] - INFO >>> 开始打开chrome浏览器
+2017-11-15 11:11:56,807 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53109/session {"desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "javascriptEnabled": true, "chromeOptions": {"extensions": [], "args": []}}, "requiredCapabilities": {}}
+2017-11-15 11:11:58,431 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:11:58,431 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> GET http://127.0.0.1:53109/session/090cac8046ebcd27b615e8e136f54a75/url {"sessionId": "090cac8046ebcd27b615e8e136f54a75"}
+2017-11-15 11:11:58,451 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:11:58,452 - root - ary.py[line:30] - INFO >>> 打开浏览器成功
+2017-11-15 11:11:58,471 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53109/session/090cac8046ebcd27b615e8e136f54a75/window/current/maximize {"windowHandle": "current", "sessionId": "090cac8046ebcd27b615e8e136f54a75"}
+2017-11-15 11:11:59,618 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:11:59,618 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53109/session/090cac8046ebcd27b615e8e136f54a75/url {"url": "https://www.baidu.com/", "sessionId": "090cac8046ebcd27b615e8e136f54a75"}
+2017-11-15 11:12:00,772 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:12:01,274 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53109/session/090cac8046ebcd27b615e8e136f54a75/elements {"using": "xpath", "value": "//*[@id=\"kw\"]", "sessionId": "090cac8046ebcd27b615e8e136f54a75"}
+2017-11-15 11:12:01,287 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:12:01,288 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53109/session/090cac8046ebcd27b615e8e136f54a75/element {"using": "xpath", "value": "//*[@id=\"kw\"]", "sessionId": "090cac8046ebcd27b615e8e136f54a75"}
+2017-11-15 11:12:01,305 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:12:01,305 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53109/session/090cac8046ebcd27b615e8e136f54a75/element/0.08064672213981772-1/value {"value": ["1", "2", "3", "4", "5", "6", "4", "5"], "id": "0.08064672213981772-1", "sessionId": "090cac8046ebcd27b615e8e136f54a75"}
+2017-11-15 11:12:01,483 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:12:01,483 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53109/session/090cac8046ebcd27b615e8e136f54a75/elements {"using": "xpath", "value": "//*[@id=\"su\"]", "sessionId": "090cac8046ebcd27b615e8e136f54a75"}
+2017-11-15 11:12:01,519 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:12:01,519 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53109/session/090cac8046ebcd27b615e8e136f54a75/element {"using": "xpath", "value": "//*[@id=\"su\"]", "sessionId": "090cac8046ebcd27b615e8e136f54a75"}
+2017-11-15 11:12:01,532 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:12:01,532 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53109/session/090cac8046ebcd27b615e8e136f54a75/element {"using": "xpath", "value": "//*[@id=\"su\"]", "sessionId": "090cac8046ebcd27b615e8e136f54a75"}
+2017-11-15 11:12:01,548 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:12:01,549 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> POST http://127.0.0.1:53109/session/090cac8046ebcd27b615e8e136f54a75/element/0.08064672213981772-2/click {"id": "0.08064672213981772-2", "sessionId": "090cac8046ebcd27b615e8e136f54a75"}
+2017-11-15 11:12:01,585 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:12:05,585 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:429] - DEBUG >>> DELETE http://127.0.0.1:53109/session/090cac8046ebcd27b615e8e136f54a75 {"sessionId": "090cac8046ebcd27b615e8e136f54a75"}
+2017-11-15 11:12:05,779 - selenium.webdriver.remote.remote_connection - remote_connection.py[line:528] - DEBUG >>> Finished Request
+2017-11-15 11:12:08,787 - root - execution_case.py[line:41] - INFO >>> 执行用例成功
